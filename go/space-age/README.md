@@ -52,3 +52,63 @@ Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+
+## Note
+
+自己写的时候只想到了用Case
+```golang
+func Age(s float64, p Planet) float64 {
+	sp := s / 31557600
+	switch p {
+	case "Earth":
+
+	case "Mercury":
+		sp = sp / 0.2408467
+
+	case "Venus":
+		sp = sp / 0.61519726
+
+	case "Mars":
+		sp = sp / 1.8808158
+
+	case "Jupiter":
+		sp = sp / 11.862615
+
+	case "Saturn":
+		sp = sp / 29.447498
+
+	case "Uranus":
+		sp = sp / 84.016846
+
+	case "Neptune":
+		sp = sp / 164.79132
+	}
+	return sp
+}
+```
+
+但是这里也可以用MAP：
+```golang
+var secondsInOneEarthYear = 31557600.0
+var orbitalPeriodsInEarthYears = map[Planet]float64{
+	"Earth":   1.0,
+	"Mercury": 0.2408467,
+	"Venus":   0.61519726,
+	"Mars":    1.8808158,
+	"Jupiter": 11.862615,
+	"Saturn":  29.447498,
+	"Uranus":  84.016846,
+	"Neptune": 164.79132,
+}
+type Planet string
+
+func Age(seconds float64, planet Planet) float64 {
+
+	secondsInAYearOnPlanet := secondsInOneEarthYear * orbitalPeriodsInEarthYears[planet]
+
+	years := seconds / secondsInAYearOnPlanet
+
+	return years
+
+}
+```
