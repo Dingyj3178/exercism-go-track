@@ -1,19 +1,19 @@
 package raindrops
 
 import (
-	"sort"
 	"strconv"
 )
 
 //Convert function convert a number to a string
 func Convert(a int) string {
+	factor := make([]string, 10)
 	result := ""
-	keys := []int{3, 5, 7}
-	factor := map[int]string{3: "Pling", 5: "Plang", 7: "Plong"}
-	sort.Ints(keys)
-	for _, f := range keys {
-		if a%f == 0 {
-			result += factor[f]
+	factor[3] = "Pling"
+	factor[5] = "Plang"
+	factor[7] = "Plong"
+	for i, f := range factor {
+		if i > 0 && a%i == 0 {
+			result += f
 		}
 	}
 	if result == "" {
