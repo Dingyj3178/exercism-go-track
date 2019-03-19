@@ -2,7 +2,7 @@ package raindrops
 
 import "strconv"
 
-//Convert function convert a number to a string.
+//Convert function convert a number to a string
 func Convert(a int) string {
 	switch {
 	case a%105 == 0:
