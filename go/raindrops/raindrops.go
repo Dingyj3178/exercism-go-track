@@ -1,23 +1,21 @@
 package raindrops
 
-import (
-	"strconv"
-)
+import "fmt"
 
 //Convert function convert a number to a string
 func Convert(a int) string {
-	factor := make([]string, 10)
 	result := ""
-	factor[3] = "Pling"
-	factor[5] = "Plang"
-	factor[7] = "Plong"
-	for i, f := range factor {
-		if i > 0 && a%i == 0 {
-			result += f
-		}
+	if a%3 == 0 {
+		result += "Pling"
+	}
+	if a%5 == 0 {
+		result += "Plang"
+	}
+	if a%7 == 0 {
+		result += "Plong"
 	}
 	if result == "" {
-		result = strconv.Itoa(a)
+		return fmt.Sprintf("%d", a)
 	}
 	return result
 }
