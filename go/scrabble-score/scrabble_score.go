@@ -4,40 +4,41 @@ import (
 	"strings"
 )
 
+var scoreMapping = map[rune]int{
+	65: 1,
+	69: 1,
+	73: 1,
+	79: 1,
+	85: 1,
+	76: 1,
+	78: 1,
+	82: 1,
+	83: 1,
+	84: 1,
+	68: 2,
+	71: 2,
+	66: 3,
+	67: 3,
+	77: 3,
+	80: 3,
+	70: 4,
+	72: 4,
+	86: 4,
+	87: 4,
+	89: 4,
+	75: 5,
+	74: 8,
+	88: 8,
+	81: 10,
+	90: 10,
+}
+
 // Score function calculate string parameter's point base on scoreMapping
 func Score(input string) int {
-	scoreMapping := map[string]int{
-		"A": 1,
-		"E": 1,
-		"I": 1,
-		"O": 1,
-		"U": 1,
-		"L": 1,
-		"N": 1,
-		"R": 1,
-		"S": 1,
-		"T": 1,
-		"D": 2,
-		"G": 2,
-		"B": 3,
-		"C": 3,
-		"M": 3,
-		"P": 3,
-		"F": 4,
-		"H": 4,
-		"V": 4,
-		"W": 4,
-		"Y": 4,
-		"K": 5,
-		"J": 8,
-		"X": 8,
-		"Q": 10,
-		"Z": 10,
-	}
 	result := 0
 	inputUpper := strings.ToUpper(input)
 	for _, s := range inputUpper {
-		result += scoreMapping[string(s)]
+		result += scoreMapping[s]
 	}
 	return result
 }
